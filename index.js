@@ -4,9 +4,9 @@
 //leader board should render each time the player finishes the game. 
 
 
-document.querySelector(".ship").style.marginLeft = "57.5%"
+document.querySelector(".ship").style.marginLeft = "42%"
 const spaceShip = document.querySelector(".ship")
-const box = document.querySelector(".box")
+const main = document.querySelector("#main")
 
 
 
@@ -14,7 +14,7 @@ function moveShipLeft() {
     let leftNumbers = spaceShip.style.marginLeft.replace("%", "");
     let left = parseInt(leftNumbers)
 
-    if (left > 17) {
+    if (left > 2) {
 
         spaceShip.style.marginLeft = `${left - 1}%`;
 
@@ -40,7 +40,7 @@ function moveShipRight() {
     let leftNumbers = spaceShip.style.marginLeft.replace("%", "");
     let left = parseInt(leftNumbers)
 
-    if (left < 98) {
+    if (left < 80) {
 
         spaceShip.style.marginLeft = `${left + 1}%`;
 
@@ -87,7 +87,7 @@ function shootMissile() {
     
     
 
-    box.append(missile)
+    main.append(missile)
 
 
 }
