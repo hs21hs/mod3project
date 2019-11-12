@@ -4,19 +4,19 @@
 //leader board should render each time the player finishes the game. 
 
 
-document.querySelector(".ship").style.marginLeft = "792.5px"
+document.querySelector(".ship").style.marginLeft = "57.5%"
 const spaceShip = document.querySelector(".ship")
 const box = document.querySelector(".box")
 
 
 
 function moveShipLeft() {
-    let leftNumbers = spaceShip.style.marginLeft.replace("px", "");
+    let leftNumbers = spaceShip.style.marginLeft.replace("%", "");
     let left = parseInt(leftNumbers)
 
-    if (left > 220) {
+    if (left > 17) {
 
-        spaceShip.style.marginLeft = `${left - 10}px`;
+        spaceShip.style.marginLeft = `${left - 1}%`;
 
     }
 
@@ -37,12 +37,12 @@ document.addEventListener("keydown", function(e){
 })
 
 function moveShipRight() {
-    let leftNumbers = spaceShip.style.marginLeft.replace("px", "");
+    let leftNumbers = spaceShip.style.marginLeft.replace("%", "");
     let left = parseInt(leftNumbers)
 
-    if (left < 1365) {
+    if (left < 98) {
 
-        spaceShip.style.marginLeft = `${left + 10}px`;
+        spaceShip.style.marginLeft = `${left + 1}%`;
 
     }
 
@@ -70,7 +70,7 @@ function shootMissile() {
     missile.className = "missile"
     
     missile.style.marginLeft = `${shipPositionNum + 20}px`
-    missile.style.marginTop = "570px";
+    missile.style.marginTop = `570px`;
     setInterval(function(){
         const missileMove = missile.style.marginTop.replace("px","")
         const missileMoveNum = parseInt(missileMove)
