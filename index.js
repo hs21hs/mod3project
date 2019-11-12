@@ -69,8 +69,8 @@ function shootMissile() {
     missile.src = '../Mod3project/assets/missile.png'
     missile.className = "missile"
     
-    missile.style.marginLeft = `${shipPositionNum + 1}%`
-    missile.style.marginTop = "95%";
+    missile.style.marginLeft = `${shipPositionNum + 7}%`
+    missile.style.marginTop = "80%";
     setInterval(function(){
         const missileMove = missile.style.marginTop.replace("%","")
         const missileMoveNum = parseInt(missileMove)
