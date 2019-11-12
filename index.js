@@ -16,7 +16,7 @@ function moveShipLeft() {
 
     if (left > 10) {
 
-        spaceShip.style.marginLeft = `${left - 5}px`;
+        spaceShip.style.marginLeft = `${left - 10}px`;
 
     }
 
@@ -42,7 +42,7 @@ function moveShipRight() {
 
     if (left < 1365) {
 
-        spaceShip.style.marginLeft = `${left + 5}px`;
+        spaceShip.style.marginLeft = `${left + 10}px`;
 
     }
 
@@ -77,7 +77,7 @@ function shootMissile() {
 
         missile.style.marginTop = `${missileMoveNum - 10}px`
 
-        if (missile.style.marginTop === "0px") {
+        if (missile.style.marginTop === "20px") {
             missile.remove()
         }
 

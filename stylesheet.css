@@ -1,4 +1,12 @@
+
+.noScroll {
+    overflow: hidden;
+    position:fixed;
+}
+
 #container {
+    position: fixed;
+    top: 5px;
     width: 200px;
     height: auto;
   }
@@ -39,16 +47,18 @@
  
   .ship {
         
-    position: absolute;
+    position: fixed;
     height: 50px;
     bottom: 50px;
+    
   }
 
   .missile {
     height: 25px;
     bottom: 25px;
     transform: rotate(-45deg);
-
+    position: relative;
+    z-index: -1;
   }
 
     
