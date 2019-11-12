@@ -16,7 +16,7 @@
 #container {
     position: fixed;
     top: 5px;
-    width: 200px;
+    width: 14.5%;
     height: auto;
   }
   
@@ -42,6 +42,7 @@
   }
   
   .row:nth-child(1) {
+  
     background: gold;
   }
   
