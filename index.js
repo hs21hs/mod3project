@@ -63,21 +63,21 @@ document.addEventListener("keydown", function(e){
 })
 
 function shootMissile() {
-    const shipPosition = spaceShip.style.marginLeft.replace("px", "")
+    const shipPosition = spaceShip.style.marginLeft.replace("%", "")
     const shipPositionNum = parseInt(shipPosition)
     const missile = document.createElement('img')
     missile.src = '../Mod3project/assets/missile.png'
     missile.className = "missile"
     
-    missile.style.marginLeft = `${shipPositionNum + 20}px`
-    missile.style.marginTop = `570px`;
+    missile.style.marginLeft = `${shipPositionNum + 1}%`
+    missile.style.marginTop = "95%";
     setInterval(function(){
-        const missileMove = missile.style.marginTop.replace("px","")
+        const missileMove = missile.style.marginTop.replace("%","")
         const missileMoveNum = parseInt(missileMove)
 
-        missile.style.marginTop = `${missileMoveNum - 10}px`
+        missile.style.marginTop = `${missileMoveNum - 1}%`
 
-        if (missile.style.marginTop === "20px") {
+        if (missile.style.marginTop === "0%") {
             missile.remove()
         }
 
@@ -86,24 +86,20 @@ function shootMissile() {
 
     
     
+
     box.append(missile)
-    
 
 
 }
 
 document.addEventListener("keydown", function(e){
-    var lastMove = 0;
-    if(Date.now() - lastMove > 2000) {
-        if (e.key === " ") {
+        
+    if (e.key === " ") {
 
             shootMissile()
-    
+            
         }
-        lastMove = Date.now();
-    } else {
-        
-    }
+   
 
 })
 
