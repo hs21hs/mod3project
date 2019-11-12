@@ -122,6 +122,6 @@ body {
 }
 
 #main {
-  background-color: violet;
+  
   grid-area: main;
 }
