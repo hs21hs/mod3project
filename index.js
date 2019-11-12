@@ -4,7 +4,7 @@
 //leader board should render each time the player finishes the game. 
 
 
-document.querySelector(".ship").style.marginLeft = "700px"
+document.querySelector(".ship").style.marginLeft = "792.5px"
 const spaceShip = document.querySelector(".ship")
 const box = document.querySelector(".box")
 
@@ -14,7 +14,7 @@ function moveShipLeft() {
     let leftNumbers = spaceShip.style.marginLeft.replace("px", "");
     let left = parseInt(leftNumbers)
 
-    if (left > 10) {
+    if (left > 220) {
 
         spaceShip.style.marginLeft = `${left - 10}px`;
 

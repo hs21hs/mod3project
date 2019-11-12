@@ -1,3 +1,11 @@
+.vl {
+  border-left: 6px solid black;
+  height: 100%;
+  position: fixed;
+  left: 205px;
+  margin-left: -3px;
+  top: 0;
+}
 
 .noScroll {
     overflow: hidden;
