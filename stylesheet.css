@@ -88,11 +88,9 @@
   }
 
   .missile {
-    color: red;
+    position: fixed;
     height: 25px;
-    bottom: 25px;
     transform: rotate(-45deg);
-    
    
   }
 
@@ -120,10 +118,11 @@ body {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: 15% auto;
+  grid-template-columns: 1fr 6fr;
   grid-template-rows: auto;
   grid-template-areas: 
     "leaderboard main";
+    
 }
 
 #leaderboard {
