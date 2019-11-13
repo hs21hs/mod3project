@@ -4,19 +4,19 @@
 //leader board should render each time the player finishes the game. 
 
 
-document.querySelector(".ship").style.marginLeft = "611px"
+document.querySelector(".ship").style.marginLeft = "50%"
 const spaceShip = document.querySelector(".ship")
 const main = document.querySelector("#main")
 
 
 
 function moveShipLeft() {
-    let leftNumbers = spaceShip.style.marginLeft.replace("px", "");
+    let leftNumbers = spaceShip.style.marginLeft.replace("%", "");
     let left = parseInt(leftNumbers)
 
-    if (left > 37) {
+    if (left > 3) {
 
-        spaceShip.style.marginLeft = `${left - 10}px`;
+        spaceShip.style.marginLeft = `${left - 1}%`;
 
     }
 
@@ -37,12 +37,12 @@ document.addEventListener("keydown", function(e){
 })
 
 function moveShipRight() {
-    let leftNumbers = spaceShip.style.marginLeft.replace("px", "");
+    let leftNumbers = spaceShip.style.marginLeft.replace("%", "");
     let left = parseInt(leftNumbers)
 
-    if (left < 1150) {
+    if (left < 95) {
 
-        spaceShip.style.marginLeft = `${left + 10}px`;
+        spaceShip.style.marginLeft = `${left + 1}%`;
 
     }
 
@@ -64,27 +64,29 @@ document.addEventListener("keydown", function(e){
 
 function shootMissile() {
     
-        const shipPosition = spaceShip.style.marginLeft.replace("px", "")
+        const shipPosition = spaceShip.style.marginLeft.replace("%", "")
         const shipPositionNum = parseInt(shipPosition)
         const missile = document.createElement('img')
         missile.src = '../Mod3project/assets/missile.png'
         missile.className = "missile"
-        
-        missile.style.marginLeft = `${shipPositionNum + 17.5}px`
-        missile.style.marginTop = "75%";
-        setInterval(function(){
-            const missileMove = missile.style.marginTop.replace("%","")
+        missile.style.top = "90%"
+        missile.style.left = spaceShip.getBoundingClientRect().left + 12 + "px"
+        // missile.style.marginLeft = `${shipPositionNum + 1}%`
+        // missile.style.marginTop = "75%";
+        const intervalId = setInterval(function(){
+            debugger
+            const missileMove = missile.style.top.replace("%", "")
             const missileMoveNum = parseInt(missileMove)
-    
-            missile.style.marginTop = `${missileMoveNum - 1}%`
-    
-            if (missile.style.marginTop === "3%") {
+            missile.style.top = `${missileMoveNum - 5}%`
+            
+            if ( parseInt(missile.style.top.replace("%", "")) < 0 ) {
                 missile.remove()
+                clearInterval(intervalId)
             }
+            
+        }, 300)
     
-        }, 10)
-    
-    
+        
         
         
     
