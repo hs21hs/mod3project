@@ -81,6 +81,8 @@ function shootMissile() {
             const missileMoveNum = parseInt(missileMove)
             missile.style.top = `${missileMoveNum - 5}%`
             
+           
+
             if ( parseInt(missile.style.top.replace("%", "")) < 0 ) {
                 missile.remove()
                 clearInterval(intervalId)
@@ -110,8 +112,8 @@ function startGame() {
     newAlien.src = '../mod3project/assets/alien.png'
     newAlien.className = "alien"
     newAlien.style.left = `${Math.floor(Math.random() * 1100) + 200}px`
-    newAlien.style.top = "-10%"
-    let rand = Math.floor(Math.random() * 40) + 10  
+    newAlien.style.top = "-1%"
+    let rand = Math.floor(Math.random() * 400) + 100  
     setInterval(function(){
         
         const newAlienHeight = newAlien.style.top.replace("%", "")
@@ -122,9 +124,25 @@ function startGame() {
             newAlien.remove()
             lives.innerHTML = lives.innerHTML - 1
         }
-        
-    }, rand)
+        const missiles = document.getElementsByClassName("missile")
+        const aliens = document.getElementsByClassName("alien")
+       
+        for (let i = 0; i<aliens.length; i++){
+            debugger
+                const alien = aliens[i];
+                const missileNmbrleft = (parseInt(missiles[i].style.left.replace("px", "")))
+                const naNmbrleft =  Math.floor(parseInt(alien.style.left.replace("px","")))
+                const naPerctNmbrtop = Math.floor(parseInt(alien.style.top.replace("%","")))
+                const missilePerctNmbrtop = Math.floor(parseInt(missiles[i].style.top.replace("%","")));
+          
 
+            if ((naPerctNmbrtop - missilePerctNmbrtop <0 && naPerctNmbrtop - missilePerctNmbrtop >-6)&&(naNmbrleft - missileNmbrleft <0 && naNmbrleft - missileNmbrleft > -45)){ alert("hit");debugger;
+                alien.remove()}
+            
+        }
+
+    }, rand)
+       
     main.append(newAlien)
 }
 
@@ -139,7 +157,7 @@ startButton.addEventListener("click", function(){
         setTimeout(function () {    //  call a 3s setTimeout when the loop is called
            startGame();          //  your code here
            i++;                     //  increment the counter
-           if (i < 10) {            //  if the counter < 10, call the loop function
+           if (i < 80) {            //  if the counter < 10, call the loop function
               spawnLoop();             //  ..  again which will trigger another 
            }                        //  ..  setTimeout()
         }, 3000)
