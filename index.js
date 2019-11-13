@@ -105,6 +105,22 @@ document.addEventListener("keydown", function(e){
 
 
 
+//LeaderBoard functions 
+//time 
+
+const timer = document.querySelector('#timer')
+let number = 0 
+
+
+// timer.children.forEach(function(time)
+// {
+//     setinterval({
+//         time 
+//     },
+//     100)
+
+// })
+
 
 
 
