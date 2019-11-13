@@ -128,17 +128,22 @@ function startGame() {
         const aliens = document.getElementsByClassName("alien")
        
         for (let i = 0; i<aliens.length; i++){
-            debugger
+            
+            for (let i = 0; i<missiles.length; i++){
                 const alien = aliens[i];
-                const missileNmbrleft = (parseInt(missiles[i].style.left.replace("px", "")))
+                
                 const naNmbrleft =  Math.floor(parseInt(alien.style.left.replace("px","")))
                 const naPerctNmbrtop = Math.floor(parseInt(alien.style.top.replace("%","")))
-                const missilePerctNmbrtop = Math.floor(parseInt(missiles[i].style.top.replace("%","")));
-          
+                if (missiles[i]){
+                    const missileNmbrleft = (parseInt(missiles[i].style.left.replace("px", "")))
+                    const missilePerctNmbrtop = Math.floor(parseInt(missiles[i].style.top.replace("%","")));
+                
+                    if ((naPerctNmbrtop - missilePerctNmbrtop <0 && naPerctNmbrtop - missilePerctNmbrtop >-6)&&(naNmbrleft - missileNmbrleft <0 && naNmbrleft - missileNmbrleft > -45)){ 
+                        alien.remove()}
+                }
 
-            if ((naPerctNmbrtop - missilePerctNmbrtop <0 && naPerctNmbrtop - missilePerctNmbrtop >-6)&&(naNmbrleft - missileNmbrleft <0 && naNmbrleft - missileNmbrleft > -45)){ alert("hit");debugger;
-                alien.remove()}
-            
+           
+            }
         }
 
     }, rand)
