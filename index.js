@@ -108,6 +108,44 @@ document.addEventListener("keydown", function(e){
 
 
 
+//LeaderBoard functions 
+//time 
+
+function startTimer(duration, display) {
+    let timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (++ timer < 0) {
+            timer ++ ;
+            // timer = duration; // uncomment this line to reset timer automatically after reaching 0
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+     let time = 60 / 60, // your time in seconds here
+        display = document.querySelector('#timer');
+    startTimer(time, display);
+};
+
+
+
+// timer.children.forEach(function(time)
+// {
+//     setinterval({
+//         time 
+//     },
+//     100)
+
+// })
+
 
 
 
