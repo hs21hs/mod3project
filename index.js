@@ -4,19 +4,19 @@
 //leader board should render each time the player finishes the game. 
 
 
-document.querySelector(".ship").style.marginLeft = "42%"
+document.querySelector(".ship").style.marginLeft = "611px"
 const spaceShip = document.querySelector(".ship")
 const main = document.querySelector("#main")
 
 
 
 function moveShipLeft() {
-    let leftNumbers = spaceShip.style.marginLeft.replace("%", "");
+    let leftNumbers = spaceShip.style.marginLeft.replace("px", "");
     let left = parseInt(leftNumbers)
 
-    if (left > 2) {
+    if (left > 37) {
 
-        spaceShip.style.marginLeft = `${left - 1}%`;
+        spaceShip.style.marginLeft = `${left - 10}px`;
 
     }
 
@@ -37,12 +37,12 @@ document.addEventListener("keydown", function(e){
 })
 
 function moveShipRight() {
-    let leftNumbers = spaceShip.style.marginLeft.replace("%", "");
+    let leftNumbers = spaceShip.style.marginLeft.replace("px", "");
     let left = parseInt(leftNumbers)
 
-    if (left < 80) {
+    if (left < 1150) {
 
-        spaceShip.style.marginLeft = `${left + 1}%`;
+        spaceShip.style.marginLeft = `${left + 10}px`;
 
     }
 
@@ -63,34 +63,35 @@ document.addEventListener("keydown", function(e){
 })
 
 function shootMissile() {
-    const shipPosition = spaceShip.style.marginLeft.replace("%", "")
-    const shipPositionNum = parseInt(shipPosition)
-    const missile = document.createElement('img')
-    missile.src = '../Mod3project/assets/missile.png'
-    missile.className = "missile"
     
-    missile.style.marginLeft = `${shipPositionNum + 7}%`
-    missile.style.marginTop = "80%";
-    setInterval(function(){
-        const missileMove = missile.style.marginTop.replace("%","")
-        const missileMoveNum = parseInt(missileMove)
-
-        missile.style.marginTop = `${missileMoveNum - 1}%`
-
-        if (missile.style.marginTop === "0%") {
-            missile.remove()
-        }
-
-    }, 10)
-
-
+        const shipPosition = spaceShip.style.marginLeft.replace("px", "")
+        const shipPositionNum = parseInt(shipPosition)
+        const missile = document.createElement('img')
+        missile.src = '../Mod3project/assets/missile.png'
+        missile.className = "missile"
+        
+        missile.style.marginLeft = `${shipPositionNum + 17.5}px`
+        missile.style.marginTop = "75%";
+        setInterval(function(){
+            const missileMove = missile.style.marginTop.replace("%","")
+            const missileMoveNum = parseInt(missileMove)
+    
+            missile.style.marginTop = `${missileMoveNum - 1}%`
+    
+            if (missile.style.marginTop === "3%") {
+                missile.remove()
+            }
+    
+        }, 10)
     
     
-
-    main.append(missile)
-
-
-}
+        
+        
+    
+        main.append(missile)
+    
+    
+    }
 
 document.addEventListener("keydown", function(e){
         
@@ -149,3 +150,7 @@ let number = 0
 //     {name: "Player4", score: "640" id:"player4"},
 //     {name: "Player5", score: "495", id:"player5"}
 //   ]
+
+
+
+// 
