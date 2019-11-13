@@ -145,6 +145,18 @@ const newLive = live - 1
 
 
 
+//Kill function 
+function killed(){
+    let kill = parseInt(document.querySelector('#kill').innerText)
+    const newKill = Kill ++ 
+}
+
+
+
+
+
+
+
 
 
 // timer.children.forEach(function(time)
