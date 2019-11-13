@@ -7,7 +7,7 @@
 document.querySelector(".ship").style.marginLeft = "50%"
 const spaceShip = document.querySelector(".ship")
 const main = document.querySelector("#main")
-
+const startButton = document.querySelector("#startButton")
 
 
 function moveShipLeft() {
@@ -65,9 +65,9 @@ document.addEventListener("keydown", function(e){
 function shootMissile() {
     
         const shipPosition = spaceShip.style.marginLeft.replace("%", "")
-        const shipPositionNum = parseInt(shipPosition)
+        // const shipPositionNum = parseInt(shipPosition)
         const missile = document.createElement('img')
-        missile.src = '../Mod3project/assets/missile.png'
+        missile.src = '../mod3project/assets/missile.png'
         missile.className = "missile"
         missile.style.top = "90%"
         missile.style.left = spaceShip.getBoundingClientRect().left + 12 + "px"
@@ -84,7 +84,7 @@ function shootMissile() {
                 clearInterval(intervalId)
             }
             
-        }, 300)
+        }, 20)
     
         
         
@@ -96,8 +96,8 @@ function shootMissile() {
     }
 
 document.addEventListener("keydown", function(e){
-        
-    if (e.key === " ") {
+    
+    if (e.key === "f") {
 
             shootMissile()
             
@@ -105,6 +105,61 @@ document.addEventListener("keydown", function(e){
    
 
 })
+
+function startGame() {
+
+    const newAlien = document.createElement("img")
+    newAlien.src = '../mod3project/assets/alien.png'
+    newAlien.className = "alien"
+    newAlien.style.left = `${Math.floor(Math.random() * 70) + 30}%`
+    newAlien.style.top = "-10%"
+    setInterval(function(){
+        const newAlienHeight = newAlien.style.top.replace("%", "")
+        const newAlienHeightNum = parseInt(newAlienHeight)
+        newAlien.style.top = `${newAlienHeightNum + 1}%`
+
+    }, 300)
+
+    main.append(newAlien)
+}
+
+
+
+
+startButton.addEventListener("click", function(){
+   
+
+        for (let i = 0; i < 10; i++) {
+            startGame()
+        }
+
+        startButton.disabled = true
+        startButton.style.opacity = "0.5"
+
+    
+    
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
