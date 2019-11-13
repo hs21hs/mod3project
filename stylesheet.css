@@ -87,6 +87,7 @@
   }
 
   .missile {
+    color: red;
     height: 25px;
     bottom: 25px;
     transform: rotate(-45deg);

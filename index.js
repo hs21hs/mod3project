@@ -62,35 +62,7 @@ document.addEventListener("keydown", function(e){
 
 })
 
-function shootMissile() {
-    const shipPosition = spaceShip.style.marginLeft.replace("%", "")
-    const shipPositionNum = parseInt(shipPosition)
-    const missile = document.createElement('img')
-    missile.src = '../Mod3project/assets/missile.png'
-    missile.className = "missile"
-    
-    missile.style.marginLeft = `${shipPositionNum + 7}%`
-    missile.style.marginTop = "60%";
-    setInterval(function(){
-        const missileMove = missile.style.marginTop.replace("%","")
-        const missileMoveNum = parseInt(missileMove)
 
-        missile.style.marginTop = `${missileMoveNum - 1}%`
-
-        if (missile.style.marginTop === "3%") {
-            missile.remove()
-        }
-
-    }, 10)
-
-
-    
-    
-
-    main.append(missile)
-
-
-}
 
 document.addEventListener("keydown", function(e){
         
@@ -133,3 +105,33 @@ document.addEventListener("keydown", function(e){
 //     {name: "Player4", score: "640" id:"player4"},
 //     {name: "Player5", score: "495", id:"player5"}
 //   ]
+
+function shootMissile() {
+    const shipPosition = spaceShip.style.marginLeft.replace("%", "")
+    const shipPositionNum = parseInt(shipPosition)
+    const missile = document.createElement('img')
+    missile.src = '../Mod3project/assets/missile.png'
+    missile.className = "missile"
+    
+    missile.style.marginLeft = `${shipPositionNum + 7}%`
+    missile.style.marginTop = "75%";
+    setInterval(function(){
+        const missileMove = missile.style.marginTop.replace("%","")
+        const missileMoveNum = parseInt(missileMove)
+
+        missile.style.marginTop = `${missileMoveNum - 1}%`
+
+        if (missile.style.marginTop === "3%") {
+            missile.remove()
+        }
+
+    }, 10)
+
+
+    
+    
+
+    main.append(missile)
+
+
+}
