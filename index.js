@@ -70,14 +70,14 @@ function shootMissile() {
     missile.className = "missile"
     
     missile.style.marginLeft = `${shipPositionNum + 7}%`
-    missile.style.marginTop = "80%";
+    missile.style.marginTop = "60%";
     setInterval(function(){
         const missileMove = missile.style.marginTop.replace("%","")
         const missileMoveNum = parseInt(missileMove)
 
         missile.style.marginTop = `${missileMoveNum - 1}%`
 
-        if (missile.style.marginTop === "0%") {
+        if (missile.style.marginTop === "3%") {
             missile.remove()
         }
 
