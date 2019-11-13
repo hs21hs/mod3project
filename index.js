@@ -164,7 +164,7 @@ startButton.addEventListener("click", function(){
 
 
 //LeaderBoard functions 
-//time 
+//timer
 
 function startTimer(duration, display) {
     let timer = duration, minutes, seconds;
@@ -189,6 +189,30 @@ window.onload = function () {
         display = document.querySelector('#timer');
     startTimer(time, display);
 };
+
+
+/// Lives Function 
+// might need id to connect live to the game
+
+function setLives(){
+let live = parseInt(document.querySelector('#live').innerText)
+const newLive = live - 1
+
+}
+
+
+
+//Kill function 
+function killed(){
+    let kill = parseInt(document.querySelector('#kill').innerText)
+    const newKill = Kill ++ 
+}
+
+
+
+
+
+
 
 
 
