@@ -81,17 +81,16 @@
  
   .ship {
         
-    position: fixed;
+    position: relative;
     height: 50px;
-    bottom: 50px;
+    top: 90vh;
     
   }
 
   .missile {
-    position: fixed;
+    position: absolute;
     height: 25px;
     transform: rotate(-45deg);
-   
   }
 
   .bouncy{
@@ -126,6 +125,7 @@ body {
 }
 
 #leaderboard {
+  position: relative;
   background-color: rgb(33, 33, 182);
   
   grid-area: leaderboard;
