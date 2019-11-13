@@ -20,7 +20,7 @@
          
           <h3 class="h3">Leader Board</h3> 
 
-          <form class=".hidden" id='form' style=" ">
+          <form class="hidden" id='form' style=" ">
               <h3 class="h3">High Score!</h3>
               <input type="text" name="name" value="" placeholder= "Enter your name..." class="input-text" id="Player">
               <input type="submit" name="submit" value="Submit" class="submit">
@@ -49,7 +49,7 @@
                 <div class="name">Lives</div><div class="score" id="live">3</div>
               </div>
               <div class="btn" id='timer'>
-                <div class="name">Time</div><div class="score">00:00</div>
+                <div class="name">Time:</div><div id='timerActual' class="score">00:00</div>
               </div>
               <div class="btn">
                   <div class="name">Killed</div><div class="score" id="Kill">0</div>
@@ -63,6 +63,19 @@
               
 
       <div id="main">
+          <!-- <div class="box">
+              <a class="button" href="#popup1">Let me Pop up</a>
+            </div> -->
+            
+            <div id="popup1" class="overlay">
+              <div class="popup">
+                <h2>Here i am</h2>
+                <a class="close" href="#">&times;</a>
+                <div class="content">
+                  Thank to pop me out of that button, but now i'm done so you can close this window.
+                </div>
+              </div>
+            </div>
         <div id='stars'></div>
         <div id='stars2'></div>
         <div id='stars3'></div>

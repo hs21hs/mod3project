@@ -8,6 +8,8 @@ document.querySelector(".ship").style.marginLeft = "50%"
 const spaceShip = document.querySelector(".ship")
 const main = document.querySelector("#main")
 const startButton = document.querySelector("#startButton")
+const lives = document.querySelector("#live")
+const popup = document.querySelector(".popup")
 
 
 function moveShipLeft() {
@@ -74,7 +76,7 @@ function shootMissile() {
         // missile.style.marginLeft = `${shipPositionNum + 1}%`
         // missile.style.marginTop = "75%";
         const intervalId = setInterval(function(){
-            debugger
+            
             const missileMove = missile.style.top.replace("%", "")
             const missileMoveNum = parseInt(missileMove)
             missile.style.top = `${missileMoveNum - 5}%`
@@ -85,11 +87,7 @@ function shootMissile() {
             }
             
         }, 20)
-    
-        
-        
-        
-    
+
         main.append(missile)
     
     
@@ -98,7 +96,7 @@ function shootMissile() {
 document.addEventListener("keydown", function(e){
     
     if (e.key === "f") {
-
+            
             shootMissile()
             
         }
@@ -111,14 +109,21 @@ function startGame() {
     const newAlien = document.createElement("img")
     newAlien.src = '../mod3project/assets/alien.png'
     newAlien.className = "alien"
-    newAlien.style.left = `${Math.floor(Math.random() * 70) + 30}%`
+    newAlien.style.left = `${Math.floor(Math.random() * 1100) + 200}px`
     newAlien.style.top = "-10%"
+    let rand = Math.floor(Math.random() * 40) + 10  
     setInterval(function(){
+        
         const newAlienHeight = newAlien.style.top.replace("%", "")
         const newAlienHeightNum = parseInt(newAlienHeight)
         newAlien.style.top = `${newAlienHeightNum + 1}%`
-
-    }, 300)
+        
+        if (newAlien.style.top === "100%") {
+            newAlien.remove()
+            lives.innerHTML = lives.innerHTML - 1
+        }
+        
+    }, rand)
 
     main.append(newAlien)
 }
@@ -128,10 +133,19 @@ function startGame() {
 
 startButton.addEventListener("click", function(){
    
+    var i = 0
 
-        for (let i = 0; i < 10; i++) {
-            startGame()
-        }
+    function spawnLoop () {           //  create a loop function
+        setTimeout(function () {    //  call a 3s setTimeout when the loop is called
+           startGame();          //  your code here
+           i++;                     //  increment the counter
+           if (i < 10) {            //  if the counter < 10, call the loop function
+              spawnLoop();             //  ..  again which will trigger another 
+           }                        //  ..  setTimeout()
+        }, 3000)
+     }
+     
+     spawnLoop();                      //  start the loop
 
         startButton.disabled = true
         startButton.style.opacity = "0.5"
@@ -140,7 +154,9 @@ startButton.addEventListener("click", function(){
     
 })
 
-
+// if (missile.getBoundingClientRect().x === newAlien.getBoundingClientRect().x && missile.getBoundingClientRect().y === newAlien.getBoundingClientRect().y) {
+//     newAlien.remove()
+// }
 
 
 
@@ -186,7 +202,7 @@ function startTimer(duration, display) {
 
 window.onload = function () {
      let time = 60 / 60, // your time in seconds here
-        display = document.querySelector('#timer');
+        display = document.querySelector('#timerActual');
     startTimer(time, display);
 };
 
@@ -208,6 +224,11 @@ function killed(){
     const newKill = Kill ++ 
 }
 
+if (lives === 0) {
+
+    popup.classList.toggle("show");
+
+}
 
 
 
