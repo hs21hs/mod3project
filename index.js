@@ -128,19 +128,24 @@ function startGame() {
         const aliens = document.getElementsByClassName("alien")
        
         for (let i = 0; i<aliens.length; i++){
+       
             
-            for (let i = 0; i<missiles.length; i++){
+            for (let k = 0; k<missiles.length; k++){
+                if (aliens[i]){
                 const alien = aliens[i];
                 
                 const naNmbrleft =  Math.floor(parseInt(alien.style.left.replace("px","")))
                 const naPerctNmbrtop = Math.floor(parseInt(alien.style.top.replace("%","")))
-                if (missiles[i]){
-                    const missileNmbrleft = (parseInt(missiles[i].style.left.replace("px", "")))
-                    const missilePerctNmbrtop = Math.floor(parseInt(missiles[i].style.top.replace("%","")));
+                    
+                if (missiles[k]){
+                    const missileNmbrleft = (parseInt(missiles[k].style.left.replace("px", "")))
+                    const missilePerctNmbrtop = Math.floor(parseInt(missiles[k].style.top.replace("%","")));
                 
-                    if ((naPerctNmbrtop - missilePerctNmbrtop <0 && naPerctNmbrtop - missilePerctNmbrtop >-6)&&(naNmbrleft - missileNmbrleft <0 && naNmbrleft - missileNmbrleft > -45)){ 
+                    if ((naPerctNmbrtop - missilePerctNmbrtop <12 && naPerctNmbrtop - missilePerctNmbrtop >-14)&&(naNmbrleft - missileNmbrleft <0 && naNmbrleft - missileNmbrleft > -45)){ 
                         alien.remove()}
                 }
+                }
+                
 
            
             }
