@@ -81,6 +81,8 @@ function shootMissile() {
             const missileMoveNum = parseInt(missileMove)
             missile.style.top = `${missileMoveNum - 5}%`
             
+           
+
             if ( parseInt(missile.style.top.replace("%", "")) < 0 ) {
                 missile.remove()
                 clearInterval(intervalId)
@@ -109,10 +111,10 @@ function startGame() {
     const newAlien = document.createElement("img")
     newAlien.src = '../mod3project/assets/alien.png'
     newAlien.className = "alien"
-    newAlien.style.left = `${Math.floor(Math.random() * 950) + 325 }px`
-    newAlien.style.top = "-10%"
-    let rand = Math.floor(Math.random() * 40) + 10  
-    const alienMovement = setInterval(function(){
+    newAlien.style.left = `${Math.floor(Math.random() * 1100) + 200}px`
+    newAlien.style.top = "-1%"
+    let rand = Math.floor(Math.random() * 400) + 100  
+    setInterval(function(){
         
         const newAlienHeight = newAlien.style.top.replace("%", "")
         const newAlienHeightNum = parseInt(newAlienHeight)
@@ -133,13 +135,50 @@ function startGame() {
             aliens.forEach(alien => alien.remove())
             div_show()
         }
-        
-        
+        const missiles = document.getElementsByClassName("missile")
+        const aliens = document.getElementsByClassName("alien")
+       
+        for (let i = 0; i<aliens.length; i++){
+       
+            
+            for (let k = 0; k<missiles.length; k++){
+                if (aliens[i]){
+                const alien = aliens[i];
+                
+                const naNmbrleft =  Math.floor(parseInt(alien.style.left.replace("px","")))
+                const naPerctNmbrtop = Math.floor(parseInt(alien.style.top.replace("%","")))
+                    
+                if (missiles[k]){
+                    const missileNmbrleft = (parseInt(missiles[k].style.left.replace("px", "")))
+                    const missilePerctNmbrtop = Math.floor(parseInt(missiles[k].style.top.replace("%","")));
+                
+                    if ((naPerctNmbrtop - missilePerctNmbrtop <12 && naPerctNmbrtop - missilePerctNmbrtop >-14)&&(naNmbrleft - missileNmbrleft <0 && naNmbrleft - missileNmbrleft > -45)){ 
+                        
+                        const finishLeft = alien.style.left
+                        const finishTop = alien.style.top
+                        const explosion = document.createElement("img")
+                        explosion.src = "https://cdn3.vectorstock.com/i/1000x1000/09/12/blue-round-explosion-vector-10270912.jpg"
+                        
+                        
+                        explosion.className = "exp"
+                        explosion.style.left = finishLeft
+                        explosion.style.top = finishTop
+                        
+                        
+                         main.append(explosion)
+
+                        alien.remove()
+                        setTimeout(function() { explosion.remove() }, 500);}
+                }
+                }
+                
+
+           
+            }
+        }
+
     }, rand)
-
-    
-    
-
+       
     main.append(newAlien)
 
     
@@ -155,18 +194,10 @@ startButton.addEventListener("click", function(){
     function spawnLoop () {           //  create a loop function
         setTimeout(function () {    //  call a 3s setTimeout when the loop is called
            startGame();          //  your code here
-           i++;    
-                 //  increment the counter
-           if (i < 1000) {
-            if(lives.innerHTML === "0"){
-                clearTimeout(spawnLoop)
-            } else {
-                spawnLoop();
-            }    //  if the counter < 10, call the loop function
-             
-                    //  ..  again which will trigger another 
-           }
-           //  ..  setTimeout()
+           i++;                     //  increment the counter
+           if (i < 80) {            //  if the counter < 10, call the loop function
+              spawnLoop();             //  ..  again which will trigger another 
+           }                        //  ..  setTimeout()
         }, 3000)
      }
 

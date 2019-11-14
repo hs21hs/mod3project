@@ -80,6 +80,12 @@
 
   }
 
+  .exp{
+    position: absolute  ;
+    height: 60px;
+    width: 60px;
+  }
+
   .missile {
     position: absolute;
     height: 25px;
@@ -499,7 +505,6 @@ html {
   color:red;
   font-weight:700
   }
-  #button-2 {
   width:10%;
   height:45px;
   border-radius:3px;
