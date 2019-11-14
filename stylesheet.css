@@ -75,7 +75,7 @@
   }
 
   .alien {
-    position:   ;
+    position: absolute;
     height: 60px;
 
   }
@@ -99,6 +99,7 @@
      animation:bouncy 5s infinite linear;
      position:relative;
     }
+    
     @keyframes bouncy {
      0%{top:0em}
      40%{top:0em}
@@ -338,7 +339,16 @@ html {
   color: white;
 }
 
-
+.gameOver {
+  font-size: 4.4rem;
+  position: absolute;
+  left: 2.5rem;
+  top: 5rem;
+  opacity: 0;
+  animation-name: topFadeOut;
+  animation-duration: 5s;
+  color: white;
+}
 
 
 .button {
@@ -389,14 +399,14 @@ html {
 
 
 
-/* h1 {
+h1 {
   text-align: center;
   font-family: Tahoma, Arial, sans-serif;
   color: #06D85F;
   margin: 80px 0;
 } */
 
-/* .box {
+.box {
   width: 40%;
   margin: 0 auto;
   background: rgba(255,255,255,0.2);
@@ -405,7 +415,7 @@ html {
   border-radius: 20px/50px;
   background-clip: padding-box;
   text-align: center;
-} */
+}
 
 /* .button {
   font-size: 1em;
