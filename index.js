@@ -121,17 +121,7 @@ function startGame() {
         if (newAlien.style.top === "100%") {
             newAlien.remove()
             lives.innerHTML = lives.innerHTML - 1
-            if (lives.innerHTML === "0") {
-            
-                const gameOver = document.createElement("span")
-                gameOver.innerHTML = 'Game Over!'
-                gameOver.className = "gameOver"
-                    
-                title.append(gameOver)
-                
-                
-            
-            }
+          
         } 
 
         if (lives.innerHTML === "0") {
@@ -141,7 +131,7 @@ function startGame() {
             startButton.style.opacity = "1"
             const aliens = document.querySelectorAll(".alien")
             aliens.forEach(alien => alien.remove())
-            
+            div_show()
         }
         
         
@@ -168,13 +158,18 @@ startButton.addEventListener("click", function(){
            i++;    
                  //  increment the counter
            if (i < 1000) {
-                           //  if the counter < 10, call the loop function
-            spawnLoop(); 
+            if(lives.innerHTML === "0"){
+                clearTimeout(spawnLoop)
+            } else {
+                spawnLoop();
+            }    //  if the counter < 10, call the loop function
+             
                     //  ..  again which will trigger another 
-           }                        //  ..  setTimeout()
+           }
+           //  ..  setTimeout()
         }, 3000)
      }
-     
+
      spawnLoop();                      //  start the loop
 
         startButton.disabled = true
@@ -190,6 +185,13 @@ startButton.addEventListener("click", function(){
 
 
 
+function div_show() {
+    document.getElementById('abc').style.display = "block";
+    }
+    //Function to Hide Popup
+    function div_hide(){
+    document.getElementById('abc').style.display = "none";
+    }
 
 
 
