@@ -142,7 +142,22 @@ function startGame() {
                     const missilePerctNmbrtop = Math.floor(parseInt(missiles[k].style.top.replace("%","")));
                 
                     if ((naPerctNmbrtop - missilePerctNmbrtop <12 && naPerctNmbrtop - missilePerctNmbrtop >-14)&&(naNmbrleft - missileNmbrleft <0 && naNmbrleft - missileNmbrleft > -45)){ 
-                        alien.remove()}
+                        
+                        const finishLeft = alien.style.left
+                        const finishTop = alien.style.top
+                        const explosion = document.createElement("img")
+                        explosion.src = "https://cdn3.vectorstock.com/i/1000x1000/09/12/blue-round-explosion-vector-10270912.jpg"
+                        
+                        
+                        explosion.className = "exp"
+                        explosion.style.left = finishLeft
+                        explosion.style.top = finishTop
+                        
+                        
+                         main.append(explosion)
+
+                        alien.remove()
+                        setTimeout(function() { explosion.remove() }, 500);}
                 }
                 }
                 
