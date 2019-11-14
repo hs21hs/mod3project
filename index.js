@@ -10,6 +10,9 @@ const main = document.querySelector("#main")
 const startButton = document.querySelector("#startButton")
 const lives = document.querySelector("#live")
 const title = document.querySelector("#title")
+const killedCounter = document.querySelector("#kill")
+const finalScore = document.querySelector('#final-score')
+
 
 
 function moveShipLeft() {
@@ -106,50 +109,72 @@ document.addEventListener("keydown", function(e){
 
 })
 
+
 function startGame() {
+    
+    
     
     const newAlien = document.createElement("img")
     newAlien.src = '../mod3project/assets/alien.png'
     newAlien.className = "alien"
-    // newAlien.style.left = `${Math.floor(Math.random() * 500) + 510}px`
-    newAlien.style.left = `500px`
+    newAlien.style.left = `${Math.floor(Math.random() * 750) + 400}px`
+    // newAlien.style.left = `500px`
     newAlien.style.top = "-1%"
-    let rand = Math.floor(Math.random() * 200) + 50 
-    alienMovement = setInterval(function(){
+    
+            
+    
+    alienMovementFunc(newAlien)
+    main.append(newAlien)
+    destroyAliens()
+    
+}
+
+
+function alienMovementFunc(newAlien) {
+    
+                
+
+    let rand = Math.floor(Math.random() * 125) + 45
         
+        const alienMovement = setInterval(function() {
+            
+            
+
         const newAlienHeight = newAlien.style.top.replace("%", "")
         const newAlienHeightNum = parseInt(newAlienHeight)
         newAlien.style.top = `${newAlienHeightNum + 1}%`
-        
+
+
+        if (newAlien.style.top === '100%' ) {
+            
+            newAlien.remove()
+            lives.innerText = parseInt(lives.innerText) - 1
+            
+        }
+
+
         if (lives.innerHTML === "0") {
 
             clearInterval(alienMovement)
             startButton.disabled = false
             startButton.style.opacity = "1"
-            const aliens = document.querySelectorAll(".alien")
-            aliens.forEach(alien => alien.remove())
+            const getRidOfAliens = document.querySelectorAll(".alien")
+            getRidOfAliens.forEach(alien => alien.remove())
             div_show()
         }
-        
-        destroyAliens()
-        
-        
-        
+        }, rand)}
 
-    }, rand)
-       
-    main.append(newAlien)
 
-    
-}
 
 function destroyAliens() {
+    setInterval(function(){
 
     const missiles = document.getElementsByClassName("missile")
         const aliens = document.getElementsByClassName("alien")
 
     for (let i = 0; i<aliens.length; i++){
    
+        
         
         for (let k = 0; k<missiles.length; k++){
             if (aliens[i]){
@@ -158,18 +183,14 @@ function destroyAliens() {
             const naNmbrleft =  Math.floor(parseInt(alien.style.left.replace("px","")))
             const naPerctNmbrtop = Math.floor(parseInt(alien.style.top.replace("%","")))
             
-            if (alien.style.top === "100%") {                       //IF STATEMENT TO REMOVE LIVES
-                alien.remove()
-                lives.innerHTML = lives.innerHTML - 1
-              
-            } 
+            
 
             if (missiles[k]){
                 const missileNmbrleft = (parseInt(missiles[k].style.left.replace("px", "")))
                 const missilePerctNmbrtop = Math.floor(parseInt(missiles[k].style.top.replace("%","")));
             
                 if ((naPerctNmbrtop - missilePerctNmbrtop <12 && naPerctNmbrtop - missilePerctNmbrtop >-14)&&(naNmbrleft - missileNmbrleft <0 && naNmbrleft - missileNmbrleft > -45)){ 
-                    
+                    killedCounter.innerText = parseInt(killedCounter.innerText) + 1
                     const finishLeft = alien.style.left
                     const finishTop = alien.style.top
                     const explosion = document.createElement("img")
@@ -181,30 +202,33 @@ function destroyAliens() {
                     explosion.style.left = finishLeft
                     explosion.style.top = finishTop
                     
-                    
+                    alien.remove()
+                    alien.style.top = null  
                      main.append(explosion)
 
-                        alien.remove()
+                        
                         missiles[k].remove()
                         
+                        
                     setTimeout(function() { explosion.remove() }, 1000);}
-            }
+            } 
             }
             
 
        
-        }
-    }
-}
+        }}}, 100)}
+
 
 
 startButton.addEventListener("click", function(){
+    killedCounter.innerText = "0"
     lives.innerHTML = "3"
     var i = 0
     
     function spawnLoop () {           //  create a loop function
         setTimeout(function () {    //  call a 3s setTimeout when the loop is called
-           startGame();          //  your code here
+           startGame()
+                     //  your code here
            i++;                     //  increment the counter
            if (i < 80) {  
                if (lives.innerHTML === "0") {
@@ -214,7 +238,7 @@ startButton.addEventListener("click", function(){
                }        //  if the counter < 10, call the loop function
                           //  ..  again which will trigger another 
            }                        //  ..  setTimeout()
-        }, 3000)
+        }, 1000)
      }
 
      spawnLoop();                      //  start the loop
@@ -233,6 +257,7 @@ startButton.addEventListener("click", function(){
 
 
 function div_show() {
+    finalScore.innerText = `You scored: ${killedCounter.innerText}`
     document.getElementById('abc').style.display = "block";
     }
     //Function to Hide Popup
