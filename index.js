@@ -117,8 +117,8 @@ function startGame() {
     const newAlien = document.createElement("img")
     newAlien.src = '../mod3project/assets/alien.png'
     newAlien.className = "alien"
-    // newAlien.style.left = `${Math.floor(Math.random() * 500) + 510}px`
-    newAlien.style.left = `500px`
+    newAlien.style.left = `${Math.floor(Math.random() * 750) + 400}px`
+    // newAlien.style.left = `500px`
     newAlien.style.top = "-1%"
     
             
@@ -134,7 +134,7 @@ function alienMovementFunc(newAlien) {
     
                 
 
-    let rand = Math.floor(Math.random() * 200) + 50
+    let rand = Math.floor(Math.random() * 125) + 45
         
         const alienMovement = setInterval(function() {
             
@@ -203,7 +203,7 @@ function destroyAliens() {
                     explosion.style.top = finishTop
                     
                     alien.remove()
-                    alien.style.top = null
+                    alien.style.top = null  
                      main.append(explosion)
 
                         
@@ -238,7 +238,7 @@ startButton.addEventListener("click", function(){
                }        //  if the counter < 10, call the loop function
                           //  ..  again which will trigger another 
            }                        //  ..  setTimeout()
-        }, 3000)
+        }, 1000)
      }
 
      spawnLoop();                      //  start the loop
