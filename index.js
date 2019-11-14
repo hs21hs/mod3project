@@ -9,7 +9,7 @@ const spaceShip = document.querySelector(".ship")
 const main = document.querySelector("#main")
 const startButton = document.querySelector("#startButton")
 const lives = document.querySelector("#live")
-const popup = document.querySelector(".popup")
+const title = document.querySelector("#title")
 
 
 function moveShipLeft() {
@@ -105,14 +105,14 @@ document.addEventListener("keydown", function(e){
 })
 
 function startGame() {
-
+    
     const newAlien = document.createElement("img")
     newAlien.src = '../mod3project/assets/alien.png'
     newAlien.className = "alien"
-    newAlien.style.left = `${Math.floor(Math.random() * 1100) + 200}px`
+    newAlien.style.left = `${Math.floor(Math.random() * 950) + 325 }px`
     newAlien.style.top = "-10%"
     let rand = Math.floor(Math.random() * 40) + 10  
-    setInterval(function(){
+    const alienMovement = setInterval(function(){
         
         const newAlienHeight = newAlien.style.top.replace("%", "")
         const newAlienHeightNum = parseInt(newAlienHeight)
@@ -121,26 +121,56 @@ function startGame() {
         if (newAlien.style.top === "100%") {
             newAlien.remove()
             lives.innerHTML = lives.innerHTML - 1
+            if (lives.innerHTML === "0") {
+            
+                const gameOver = document.createElement("span")
+                gameOver.innerHTML = 'Game Over!'
+                gameOver.className = "gameOver"
+                    
+                title.append(gameOver)
+                
+                
+            
+            }
+        } 
+
+        if (lives.innerHTML === "0") {
+
+            clearInterval(alienMovement)
+            startButton.disabled = false
+            startButton.style.opacity = "1"
+            const aliens = document.querySelectorAll(".alien")
+            aliens.forEach(alien => alien.remove())
+            
         }
+        
         
     }, rand)
 
+    
+    
+
     main.append(newAlien)
+
+    
 }
 
 
 
 
 startButton.addEventListener("click", function(){
-   
+    lives.innerHTML = "3"
     var i = 0
-
+    
     function spawnLoop () {           //  create a loop function
         setTimeout(function () {    //  call a 3s setTimeout when the loop is called
            startGame();          //  your code here
-           i++;                     //  increment the counter
-           if (i < 10) {            //  if the counter < 10, call the loop function
-              spawnLoop();             //  ..  again which will trigger another 
+           i++;    
+                 //  increment the counter
+           if (i < 1000) {
+                           //  if the counter < 10, call the loop function
+            spawnLoop(); 
+                    //  ..  again which will trigger another 
            }                        //  ..  setTimeout()
         }, 3000)
      }
@@ -150,13 +180,14 @@ startButton.addEventListener("click", function(){
         startButton.disabled = true
         startButton.style.opacity = "0.5"
 
-    
+      
     
 })
 
 // if (missile.getBoundingClientRect().x === newAlien.getBoundingClientRect().x && missile.getBoundingClientRect().y === newAlien.getBoundingClientRect().y) {
 //     newAlien.remove()
 // }
+
 
 
 
@@ -200,6 +231,9 @@ function startTimer(duration, display) {
     }, 1000);
 }
 
+
+
+
 window.onload = function () {
      let time = 60 / 60, // your time in seconds here
         display = document.querySelector('#timerActual');
@@ -224,11 +258,6 @@ function killed(){
     const newKill = kill ++ 
 }
 
-if (lives === 0) {
-
-    popup.classList.toggle("show");
-
-}
 
 
 //form action 
