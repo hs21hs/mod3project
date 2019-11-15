@@ -138,7 +138,7 @@ function alienMovementFunc(newAlien) {
     
                 
 
-    let rand = Math.floor(Math.random() * 125) + 45
+    let rand = Math.floor(Math.random() * 110) + 40
         
         const alienMovement = setInterval(function() {
             
