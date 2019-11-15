@@ -30,16 +30,13 @@ function moveShipLeft() {
 
 
 
-document.addEventListener("keydown", function(e){
+// document.addEventListener("keydown", function(e){
     
-    if(e.key === "ArrowLeft") {
-        moveShipLeft()
-
-    }
+    
 
 
 
-})
+// })
 
 function moveShipRight() {
     let leftNumbers = spaceShip.style.marginLeft.replace("%", "");
@@ -56,16 +53,13 @@ function moveShipRight() {
 
 
 
-document.addEventListener("keydown", function(e){
+// document.addEventListener("keydown", function(e){
     
-    if(e.key === "ArrowRight") {
-        moveShipRight()
-
-    }
+   
 
 
 
-})
+// })
 
 function shootMissile() {
     
@@ -105,7 +99,15 @@ document.addEventListener("keydown", function(e){
             shootMissile()
             
         }  
-   
+    if(e.key === "ArrowRight") {
+            moveShipRight()
+    
+        }
+
+    if(e.key === "ArrowLeft") {
+            moveShipLeft()
+    
+        }
 
 })
 
@@ -203,7 +205,7 @@ function destroyAliens() {
                     explosion.style.top = finishTop
                     
                     alien.remove()
-                    alien.style.top = null  
+                    alien.style.top = null  //sorry
                      main.append(explosion)
 
                         
@@ -266,6 +268,17 @@ function div_show() {
     }
 
 
+    function renderGames(games) {
+        
+        games.forEach(function(game){
+
+            game.score << newArray
+
+        })
+
+
+
+    }
 
 
 
