@@ -12,8 +12,10 @@ const lives = document.querySelector("#live")
 const title = document.querySelector("#title")
 const killedCounter = document.querySelector("#kill")
 const finalScore = document.querySelector('#final-score')
+const form = document.querySelector('#form-2')
+const formInput = document.querySelector("#name-2")
 
-
+getScores()
 
 function moveShipLeft() {
     let leftNumbers = spaceShip.style.marginLeft.replace("%", "");
@@ -326,28 +328,23 @@ const newLive = live - 1
 
 
 
-//Kill function 
-function killed(){
-    let kill = parseInt(document.querySelector('#kill').innerText)
-    const newKill = kill ++ 
-}
 
 
 
 //form action 
 
-const form = document.querySelector('#form')
-form.addEventListener('submit', function(e){
-    e.preventDefault()
-    debugger
-const name = document.createElement('div')
-name.class = 'name'
+// const form = document.querySelector('#form')
+// form.addEventListener('submit', function(e){
+//     e.preventDefault()
+    
+// const name = document.createElement('div')
+// name.class = 'name'
 
-const score = document.createElement('div')
-score.class = 'score'
+// const score = document.createElement('div')
+// score.class = 'score'
 
 
-})
+// })
 
  function getScores(){
 
@@ -356,14 +353,76 @@ score.class = 'score'
     .then(games => renderGames(games))
  }
 
- function renderGames(games){
-     debugger
+    function renderGames(games){
+        games.sort(function(a,b){ return b.score - a.score});
+        for(let i = 0; i < 5; i++){
+            renderGame(games[i])
+        
 
- }
+
+    }}
+    
 
 
- getScores()
+    function renderGame(game){
+     const board = document.querySelector('#board')
+     const newRow = document.createElement('div')
+     const newSubRow1 = document.createElement('div')
+     const newSubRow2 = document.createElement('div')
+    
+    newRow.className = 'row'
+    newSubRow1.className = 'name'
+    newSubRow2.className = 'score'
 
+    newSubRow1.innerText = `${game.name}`
+    newSubRow2.innerText = `${game.score}`
+
+    newRow.appendChild(newSubRow1)
+    newRow.appendChild(newSubRow2)
+        board.append(newRow)
+    //  newRow.innerHTML = `${game.name} : ${game.score}`
+
+     }
+
+     form.addEventListener("submit", function(e) {
+        e.preventDefault()
+            
+        postGame()
+        div_hide()
+    })
+
+    function postGame() {
+        
+        let configObj = {
+            method: 'POST',
+
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                'name': formInput.value,
+                'score': killedCounter.innerHTML
+            })
+
+
+
+        }
+        const newRow = document.querySelectorAll(".row")
+        for (let i = 0; i < newRow.length; i++) {
+        
+            newRow[i].remove()
+        } 
+
+        fetch('http://localhost:3000/games', configObj)
+        .then(resp => resp.json())
+        .then(games => getScores())
+       
+       
+
+    }
+
+    
 
 
 

@@ -19,11 +19,4 @@ ActiveRecord::Schema.define(version: 2019_11_14_164045) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "players", force: :cascade do |t|
-    t.string "name"
-    t.integer "score"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
 end
