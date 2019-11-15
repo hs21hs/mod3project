@@ -362,8 +362,20 @@ score.class = 'score'
 
 })
 
+ function getScores(){
 
- 
+  return  fetch('http://localhost:3000/games')
+    .then(resp => resp.json())
+    .then(games => renderGames(games))
+ }
+
+ function renderGames(games){
+     debugger
+
+ }
+
+
+ getScores()
 
 
 

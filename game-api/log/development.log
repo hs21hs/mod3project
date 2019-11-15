@@ -1111,3 +1111,70 @@ Processing by GamesController#index as HTML
 Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.6ms | Allocations: 4474)
 
 
+Started GET "/" for ::1 at 2019-11-14 17:16:52 +0000
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/milenkhanal/.rvm/gems/ruby-2.6.1/gems/railties-6.0.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/milenkhanal/.rvm/gems/ruby-2.6.1/gems/railties-6.0.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 20.0ms | Allocations: 317)
+Completed 200 OK in 26ms (Views: 23.5ms | ActiveRecord: 0.0ms | Allocations: 1607)
+
+
+Started GET "/games" for ::1 at 2019-11-14 17:16:58 +0000
+Processing by GamesController#index as HTML
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  ↳ app/controllers/games_controller.rb:5:in `index'
+Completed 200 OK in 11ms (Views: 8.1ms | ActiveRecord: 1.3ms | Allocations: 4766)
+
+
+Started GET "/" for ::1 at 2019-11-15 09:14:54 +0000
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/milenkhanal/.rvm/gems/ruby-2.6.1/gems/railties-6.0.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/milenkhanal/.rvm/gems/ruby-2.6.1/gems/railties-6.0.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 6.5ms | Allocations: 317)
+Completed 200 OK in 14ms (Views: 9.7ms | ActiveRecord: 0.0ms | Allocations: 1606)
+
+
+Started GET "/games" for ::1 at 2019-11-15 09:14:57 +0000
+Processing by GamesController#index as HTML
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  ↳ app/controllers/games_controller.rb:5:in `index'
+Completed 200 OK in 19ms (Views: 15.5ms | ActiveRecord: 1.3ms | Allocations: 4824)
+
+
+Started GET "/games" for ::1 at 2019-11-15 09:16:47 +0000
+Processing by GamesController#index as */*
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  ↳ app/controllers/games_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.2ms | Allocations: 870)
+
+
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGame Create (1.2ms)[0m  [1m[32mINSERT INTO "games" ("name", "score", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Haider"], ["score", "3"], ["created_at", "2019-11-15 09:19:19.712690"], ["updated_at", "2019-11-15 09:19:19.712690"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("name", "score", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Tom"], ["score", "10"], ["created_at", "2019-11-15 09:19:19.721844"], ["updated_at", "2019-11-15 09:19:19.721844"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGame Create (0.3ms)[0m  [1m[32mINSERT INTO "games" ("name", "score", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Milen"], ["score", "5"], ["created_at", "2019-11-15 09:19:19.725717"], ["updated_at", "2019-11-15 09:19:19.725717"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/games" for ::1 at 2019-11-15 09:21:40 +0000
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by GamesController#index as */*
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  ↳ app/controllers/games_controller.rb:5:in `index'
+Completed 200 OK in 10ms (Views: 7.3ms | ActiveRecord: 0.9ms | Allocations: 5038)
+
+
+Started GET "/games" for ::1 at 2019-11-15 09:21:40 +0000
+Processing by GamesController#index as */*
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  ↳ app/controllers/games_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 1191)
+
+
