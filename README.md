@@ -14,4 +14,4 @@ Dependency- The game works without these dependencies. Although if you want high
 
 create the rails database and run migrations; rails db:create rails db:migrate
 
-<img src= "h"/>
+<img src= "./assets/galaga.png"/>
